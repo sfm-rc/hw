@@ -1,0 +1,9 @@
+{
+  "compact": false,
+  "presets": [
+    "react",
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": ["jsx-control-statements", "transform-decorators-legacy", ["import", { "libraryName": "antd-mobile", "style": true }]]
+}
