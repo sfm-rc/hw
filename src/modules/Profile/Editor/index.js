@@ -1,69 +1,67 @@
 import React, { Component } from 'react';
+import { InputItem, Picker, List, DatePicker, Button } from 'antd-mobile';
+import moment from 'moment';
 
 import './index.less';
 
 class ProfileEditor extends Component {
 
   state = {
-    certificationOptions: [
-      { value: 'id', label: '身份证' },
-      { value: 'id2', label: '护照' },
-    ],
-    certification: 'id',
-    time: new Date(),
-    isOpen: true,
+    certifications: [{ value: '1', label: '身份证' }, { value: '0', label: '护照' }],
+    credentialValue: ['1'],
+    sexOptions: [{ value: '1', label: '男' }, { value: '0', label: '女' }],
+    sexValue: ['1'],
+    name: '',
   }
 
-  onCertifationChange = (value) => {
-    this.setState({ certification: value });
+  onNameChange =(value) => {
+    this.setState({ name: value });
   }
 
-  handleClick = () => {
-    this.setState({ isOpen: true });
-  }
+  // onCredentialChange = (value) => {
+  //   console.log('onCredentialChange:', value);
+  // }
 
-  handleCancel = () => {
-    this.setState({ isOpen: false });
-  }
-
-  handleSelect = (time) => {
-    this.setState({ time, isOpen: false });
-  }
+  // onCredentialOk = (value) => {
+  //   console.log('onCredentialOk:', value);
+  // }
 
   render() {
-    const { certificationOptions, certification } = this.state;
+    const maxDate = moment('2016-12-03 +0800', 'YYYY-MM-DD Z').utcOffset(8);
+    const minDate = moment('2015-08-06 +0800', 'YYYY-MM-DD Z').utcOffset(8);
+
+    const { name, certifications, credentialValue, sexOptions, sexValue } = this.state;
     return (
       <div className="hw-profile-editor">
         <div className="title">被保人信息</div>
-        <div className="info-type">姓名</div>
-        <div className="input-wrapper">
-          <input type="text" className="info-input" />
-        </div>
-        <div className="info-type">证件类型</div>
-        <div className="input-wrapper">
-        </div>
-        <div className="info-type">证件号码</div>
-        <div className="input-wrapper">
-          <input type="text" className="info-input" />
-        </div>
-        <div className="info-type">性别</div>
-        <div className="input-wrapper">
-          <input type="text" className="info-input" />
-        </div>
-        <div className="info-type">出生日期</div>
-        <div className="input-wrapper">
-        </div>
-        <div className="info-type">手机号码</div>
-        <div className="input-wrapper">
-          <input type="text" className="info-input" />
-        </div>
-        <div className="info-type">紧急联系人</div>
-        <div className="input-wrapper">
-          <input type="text" className="info-input" />
-        </div>
-        <div className="info-type">紧急联系人手机号码</div>
-        <div className="input-wrapper">
-          <input type="text" className="info-input" />
+        <InputItem value={name} onChange={this.onNameChange}>姓名</InputItem>
+        <Picker
+          data={certifications}
+          cols={1}
+          className="forss"
+          value={credentialValue}
+          onChange={v => this.setState({ credentialValue: v })}>
+          <List.Item arrow="horizontal">证件类型</List.Item>
+        </Picker>
+        <InputItem>证件号码</InputItem>
+        <Picker
+          data={sexOptions}
+          cols={1} className="forss" value={sexValue} onChange={v => this.setState({ sexValue: v })}>
+          <List.Item arrow="horizontal">性别</List.Item>
+        </Picker>
+        <DatePicker
+          mode="date"
+          title="选择日期"
+          extra="请选择"
+          minDate={minDate}
+          maxDate={maxDate}>
+          <List.Item arrow="horizontal">出生日期</List.Item>
+        </DatePicker>
+        <InputItem>手机号码</InputItem>
+        <InputItem>紧急联系人</InputItem>
+        <InputItem>联系人号码</InputItem>
+        <div className="btn-wrapper">
+          <Button type="primary" size="large">提交</Button>
         </div>
       </div>);
   }
