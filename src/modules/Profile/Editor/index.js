@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputItem, Picker, List, DatePicker, Button } from 'antd-mobile';
+import { InputItem, Picker, List, DatePicker, Button, NavBar, Icon } from 'antd-mobile';
 import moment from 'moment';
 
 import './index.less';
@@ -18,14 +18,6 @@ class ProfileEditor extends Component {
     this.setState({ name: value });
   }
 
-  // onCredentialChange = (value) => {
-  //   console.log('onCredentialChange:', value);
-  // }
-
-  // onCredentialOk = (value) => {
-  //   console.log('onCredentialOk:', value);
-  // }
-
   render() {
     const maxDate = moment('2016-12-03 +0800', 'YYYY-MM-DD Z').utcOffset(8);
     const minDate = moment('2015-08-06 +0800', 'YYYY-MM-DD Z').utcOffset(8);
@@ -33,6 +25,7 @@ class ProfileEditor extends Component {
     const { name, certifications, credentialValue, sexOptions, sexValue } = this.state;
     return (
       <div className="hw-profile-editor">
+        <NavBar iconName="left" mode="light" onLeftClick={() => { window.history.go(-1); }}>个人资料卡</NavBar>
         <div className="title">被保人信息</div>
         <InputItem value={name} onChange={this.onNameChange}>姓名</InputItem>
         <Picker
@@ -57,9 +50,9 @@ class ProfileEditor extends Component {
           maxDate={maxDate}>
           <List.Item arrow="horizontal">出生日期</List.Item>
         </DatePicker>
-        <InputItem>手机号码</InputItem>
+        <InputItem type="phone">手机号码</InputItem>
         <InputItem>紧急联系人</InputItem>
-        <InputItem>联系人号码</InputItem>
+        <InputItem type="phone">联系人号码</InputItem>
         <div className="btn-wrapper">
           <Button type="primary" size="large">提交</Button>
         </div>

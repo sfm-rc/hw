@@ -38,10 +38,10 @@ module.exports = (env) => {
         exclude: /(node_modules|bower_components)/,
         use: 'babel-loader',
       }, {
-        test: /\.(woff|woff2|ttf|otf|eot|svg)$/,
+        test: /\.(woff|woff2|ttf|otf|eot)$/,
         loader: 'file-loader',
       }, {
-        test: /\.(jpg|png|gif|svg)$/i,
+        test: /\.(jpg|png|gif)$/i,
         loader: 'file-loader?name=[name].[ext]',
       }, {
         test: /\.svg$/,
@@ -103,6 +103,7 @@ module.exports = (env) => {
       new webpack.DefinePlugin({
         __DEV__: JSON.stringify(true),
       }),
+      new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/),
       new WriteFilePlugin(),
       new webpack.HotModuleReplacementPlugin());
   }

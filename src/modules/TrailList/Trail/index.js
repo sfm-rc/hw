@@ -5,7 +5,7 @@ import './index.less';
 const Trail = () => (
   <div className="trail">
     <div className="img">
-      <img src="http://img.taopic.com/uploads/allimg/140620/240509-1406200K30138.jpg" alt="" />
+      <img src="http://58pic.ooopic.com/58pic/12/81/90/27v58PICbU9.jpg" alt="" />
     </div>
     <div className="clear" />
     <div className="details">

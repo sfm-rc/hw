@@ -11,12 +11,12 @@ class Activity extends Component {
   render() {
     return (<div className="ft-activity">
       <div className="img-wrapper">
-        <img src="http://img.taopic.com/uploads/allimg/140620/240509-1406200K30138.jpg" alt="" />
+        <img src="http://58pic.ooopic.com/58pic/12/81/90/27v58PICbU9.jpg" alt="" />
       </div>
       <div className="content">
         <div className="type">
           <span className="info">类型：农家乐</span>
-          <span className="trail">路线：七尖</span>
+          <span className="trail-name">路线：七尖</span>
         </div>
         <div className="contact">刘老板 1336666666</div>
         <div className="infos">
