@@ -10,6 +10,7 @@ import {
   ActivityList,
   TrailList,
   TrailDetail,
+  ActivityJoin
 } from './modules';
 import './styles/index.less';
 
@@ -21,6 +22,7 @@ const App = () => (
     <Route exact path="/activity/list" component={ActivityList} />
     <Route exact path="/trail/list" component={TrailList} />
     <Route exact path="/trail/detail" component={TrailDetail} />
+    <Route exact path="/activity/join" component={ActivityJoin} />
   </div>
 );
 
