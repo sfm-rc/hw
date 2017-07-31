@@ -13,7 +13,7 @@ module.exports = (env) => {
   const PATHS = {
     app: path.join(__dirname, 'src'),
     dist: path.join(__dirname, 'dist'),
-    publicPath: __PROD__ ? ecosystem.CDN : '/',
+    publicPath: '/',
   };
 
   console.log('==> ecosystem: ', JSON.stringify(ecosystem, null, 2));
@@ -77,15 +77,15 @@ module.exports = (env) => {
       compress: true,
       inline: true,
       port: 7070,
-      host: '192.168.18.5',
+      host: '192.168.18.10',
       // disableHostCheck: true,
-      // proxy: {
-      //   '/api': {
-      //     target: `http://${ecosystem.API_HOST}`,
-      //     secure: false,
-      //     changeOrigin: true,
-      //   },
-      // },
+      proxy: {
+        '/hw': {
+          target: 'http://localhost:3000',
+          secure: false,
+          changeOrigin: true,
+        },
+      },
     },
   };
 
@@ -109,6 +109,7 @@ module.exports = (env) => {
   }
 
   if (__PROD__) {
+    console.log('-----------------prod-------------');
     config.entry = { app: `${PATHS.app}/client` };
     config.module.rules.push({
       test: /\.less$/i,
@@ -116,6 +117,10 @@ module.exports = (env) => {
         fallback: 'style-loader',
         use: ['css-loader', 'postcss-loader', 'less-loader'],
       }),
+    });
+    config.module.rules.push({
+      test: /\.css$/,
+      use: ['css-loader'],
     });
     config.plugins.push(
       new webpack.DefinePlugin({

@@ -39,8 +39,6 @@
     "react-render-html": "^0.2.0",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-select": "^1.0.0-rc.5",
-    "recharts": "^1.0.0-alpha.1",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
@@ -99,6 +97,7 @@
     "dev:mock": "yarn dev -- --env.ecosystem mock",
     "build": "webpack --progress --colors --display-error-details --config webpack.config.js --env.production",
     "build:mock": "yarn clean:dist && yarn lint && yarn build -- --env.ecosystem sst",
+    "build:prod": "yarn clean:dist && yarn build -- --env.ecosystem production",
     "start.win:mock": "SET ECOSYSTEM=sst&pm2 start server.js --name=finacial -i 4 --watch=."
   }
 }
