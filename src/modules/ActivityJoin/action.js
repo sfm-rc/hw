@@ -7,7 +7,7 @@ export const getActivity = params => ({
 
 export const joinActivity = params => ({
     type: 'ADD_JOIN',
-    url: '/hw/activity/join',
+    url: '/hw/join/add',
     method: 'POST',
     data: JSON.stringify(params),
 })

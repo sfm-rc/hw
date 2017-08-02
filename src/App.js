@@ -18,10 +18,10 @@ const App = () => (
     <Route exact path="/" component={Home} />
     <Route exact path="/list" component={List} />
     <Route exact path="/profile/edit" component={ProfileEditor} />
-    <Route exact path="/activity/list" component={ActivityList} />
     <Route exact path="/trail/list" component={TrailList} />
     <Route exact path="/trail/detail" component={TrailDetail} />
-    <Route exact path="/activity/join" component={ActivityJoin} />
+    <Route exact path="/activity/list/:admin_id" component={ActivityList} />
+    <Route exact path="/activity/join/:activity_id" component={ActivityJoin} />
   </div>
 );
 
