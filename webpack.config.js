@@ -77,7 +77,7 @@ module.exports = (env) => {
       compress: true,
       inline: true,
       port: 7070,
-      host: '192.168.18.10',
+      host: '0.0.0.0',
       // disableHostCheck: true,
       proxy: {
         '/hw': {

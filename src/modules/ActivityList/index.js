@@ -28,7 +28,7 @@ class ActivityList extends Component {
 
   componentWillMount() {
     const pageIndex = this.state.pageIndex;
-    this.props.getActivities({ admin_id: '1', pageIndex, limit: 10 }).then((response) => {
+    this.props.getActivities({ admin_id: this.props.match.params.admin_id, pageIndex, limit: 10 }).then((response) => {
       let { activities } = this.state;
       const data = response.resolved.data;
       const list = data.data;
