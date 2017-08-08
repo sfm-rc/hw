@@ -9,7 +9,7 @@ import {
   ActivityList,
   TrailList,
   TrailDetail,
-  ActivityJoin
+  ActivityJoin,
 } from './modules';
 import './styles/index.less';
 

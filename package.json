@@ -96,7 +96,7 @@
     "dev": "webpack-dev-server --config webpack.config.js --env.development",
     "dev:mock": "yarn dev -- --env.ecosystem mock",
     "build": "webpack --progress --colors --display-error-details --config webpack.config.js --env.production",
-    "build:mock": "yarn clean:dist && yarn lint && yarn build -- --env.ecosystem sst",
+    "build:mock": "yarn clean:dist && yarn build -- --env.ecosystem sst",
     "build:prod": "yarn clean:dist && yarn build -- --env.ecosystem production",
     "start.win:mock": "SET ECOSYSTEM=sst&pm2 start server.js --name=finacial -i 4 --watch=."
   }

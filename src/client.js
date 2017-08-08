@@ -8,7 +8,7 @@ import confgureStore from './redux/configureStore';
 import App from './App';
 import overrideHistory from './utils/overrideHistory';
 
-const history = overrideHistory(createBrowserHistory({ basename: '' }));
+const history = overrideHistory(createBrowserHistory({ basename: 'test' }));
 const store = confgureStore();
 
 const renderApp = () => {

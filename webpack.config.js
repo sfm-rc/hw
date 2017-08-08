@@ -127,7 +127,7 @@ module.exports = (env) => {
         __DEV__: JSON.stringify(false),
         'process.env.NODE_ENV': JSON.stringify('production'),
       }),
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/),
       new webpack.NoEmitOnErrorsPlugin(),
       new ExtractTextPlugin({
         filename: '[name]-[hash].css',
