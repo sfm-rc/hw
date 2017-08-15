@@ -16,7 +16,7 @@ import './styles/index.less';
 const App = () => (
   <div>
     <Route exact path="/user-hw/" component={Home} />
-    <Route exact path="/user-hw/profile/edit/:user_id" component={ProfileEditor} />
+    <Route exact path="/user-hw/profile/edit/:activity_id" component={ProfileEditor} />
 
     <Route exact path="/user-hw/activity/list/:admin_id" component={ActivityList} />
     <Route exact path="/user-hw/activity/join/:activity_id" component={ActivityJoin} />
