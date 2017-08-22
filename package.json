@@ -98,6 +98,7 @@
     "build": "webpack --progress --colors --display-error-details --config webpack.config.js --env.production",
     "build:mock": "yarn clean:dist && yarn build -- --env.ecosystem sst",
     "build:prod": "yarn clean:dist && yarn build -- --env.ecosystem production",
-    "start.win:mock": "SET ECOSYSTEM=sst&pm2 start server.js --name=finacial -i 4 --watch=."
+    "start.win:mock": "SET ECOSYSTEM=sst&pm2 start server.js --name=finacial -i 4 --watch=.",
+    "start": "npm run build"
   }
 }
