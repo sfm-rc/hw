@@ -40,7 +40,9 @@ class TrailList extends Component {
 
   componentWillMount() {
     const pageIndex = this.state.pageIndex;
-    this.props.getTravelNotes({ type: this.props.match.params.type, pageIndex, limit: 10 }).then((response) => {
+    const params = this.props.match.params;
+    const postData = { type: params.type, admin_id: params.admin_id, pageIndex, limit: 10 };
+    this.props.getTravelNotes(postData).then((response) => {
       let { travelNotes } = this.state;
       const data = response.resolved.data;
       const list = data.data;
@@ -55,8 +57,9 @@ class TrailList extends Component {
   showMore = () => {
     this.setState({ animating: true });
     const pageIndex = this.state.pageIndex;
-    const type = this.props.match.params.type;
-    this.props.getTravelNotes({ type, pageIndex, limit: 10 }).then((response) => {
+    const params = this.props.match.params;
+    const postData = { type: params.type, admin_id: params.admin_id, pageIndex, limit: 10 };
+    this.props.getTravelNotes(postData).then((response) => {
       let { travelNotes } = this.state;
       const data = response.resolved.data;
       const list = data.data;

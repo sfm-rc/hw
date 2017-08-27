@@ -78,6 +78,7 @@ module.exports = (env) => {
       inline: true,
       port: 7070,
       host: '0.0.0.0',
+      // host: '192.168.18.10',
       // disableHostCheck: true,
       proxy: {
         '/hw': {

@@ -21,7 +21,7 @@ const App = () => (
     <Route exact path="/user-hw/activity/join/:activity_id" component={ActivityJoin} />
     <Route exact path="/user-hw/trail/list" component={List} />
     <Route exact path="/user-hw/trail/detail" component={TrailDetail} />
-    <Route exact path="/user-hw/list/:type" component={TrailList} />
+    <Route exact path="/user-hw/list/:type/:admin_id" component={TrailList} />
   </div>
 );
 
