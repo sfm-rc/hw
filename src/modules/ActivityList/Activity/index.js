@@ -38,7 +38,7 @@ const Activity = ({ activity } = defaultProps) => {
           <div className="title">{activity.title}</div>
           <div className="end-date">截止时间：{activity.end_time}</div>
           <div className="infos">
-            <span className="price">￥{activity.price}/人</span>
+            <span className="price">￥{activity.price/10.0}元/人</span>
             <span className="people">{activity.cur_num}/{activity.limit_num}人</span>
           </div>
           <div className={btnCls}>{statusMap[activity.status]}</div>

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import './index.less';
-import { InputItem, Picker, List, Button, Checkbox, ActivityIndicator, Modal } from 'antd-mobile';
+import { InputItem, Picker, List, Button, Checkbox, ActivityIndicator, Modal, TextareaItem } from 'antd-mobile';
 
 const AgreeItem = Checkbox.AgreeItem;
 import * as actionCreators from './action';
@@ -17,6 +17,7 @@ import * as actionCreators from './action';
 class ActivityJoin extends Component {
     constructor(props){
         super(props);
+        window.document.title = '报名';
     }
 
     static propTypes = {
@@ -126,13 +127,16 @@ class ActivityJoin extends Component {
           <div className='head-content'>
               <h2 className="head-title">{activity.title}</h2>
               <div className="head-sub-title">
-                <span>温馨提示:</span><span>{activity.note}</span>
+                <span>温馨提示:</span><span>
+                  {/*{activity.note}*/}
+                  请您仔细阅读活动图文，也可以跟领队联络沟通后再行报名。
+                  </span>
               </div>
           </div>
         </div>
         <div className="join-wrapper">
-            <InputItem onChange={this.onChangeNameAlias} value={joinDetail.user_name_alias} >户外花名</InputItem>
-            <InputItem onChange={this.onChangeName} value={joinDetail.user_name}>姓名</InputItem>
+            <InputItem onChange={this.onChangeNameAlias} value={joinDetail.user_name_alias} placeholder="请输入您的户外花名" >户外花名</InputItem>
+            <InputItem onChange={this.onChangeName} value={joinDetail.user_name} placeholder="请输入您的真实姓名">姓名</InputItem>
             <Picker
                 data={sexOptions}
                 cols={1} className="forss" value={[joinDetail.sex]} 
@@ -141,7 +145,7 @@ class ActivityJoin extends Component {
             </Picker>
             <InputItem
                 type="phone"
-                placeholder="186 1234 1234"
+                placeholder="请输入您常用的手机号"
                 value={joinDetail.mobile}
                 onChange={this.onChangeMobile}
             >手机号码</InputItem>
@@ -152,7 +156,8 @@ class ActivityJoin extends Component {
                 value={joinDetail.down_payment}
                 onChange={this.onChangeDownPayment}
             >定金</InputItem>
-            <InputItem value={joinDetail.extra} onChange={this.onChangeExtra}>其他</InputItem>
+            <TextareaItem value={joinDetail.extra} onChange={this.onChangeExtra} rows={3} style={{marginRight: '1rem'}}
+                          placeholder="您可以填写 报名人数、是否有老人小孩及其年龄、缺少装备等补充情况，以便领队知晓" title="其他"></TextareaItem>
 
             <AgreeItem data-seed="logId" onChange={e => {
                this.setState({isAgree: e.target.checked})

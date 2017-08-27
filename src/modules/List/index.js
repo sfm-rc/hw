@@ -5,6 +5,10 @@ import Activity from './Activity';
 import './index.less';
 
 class List extends Component {
+  constructor(props){
+    super(props);
+  }
+
 
   state = {
     searchValue: '',
