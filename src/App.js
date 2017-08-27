@@ -24,7 +24,7 @@ const App = () => (
     <Route exact path="/user-hw/trail/list" component={List} />
     <Route exact path="/user-hw/trail/detail" component={TrailDetail} />
 
-    <Route exact path="/user-hw/list" component={TrailList} />
+    <Route exact path="/user-hw/list/:type" component={TrailList} />
   </div>
 );
 

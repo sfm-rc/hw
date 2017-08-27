@@ -1,22 +1,37 @@
 import React from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import './index.less';
 
-const Trail = () => (
+const defaultProps = {
+  activity: {},
+};
+
+const propTypes = {
+  activity: PropTypes.object,
+};
+
+const Trail = ({ travelNote } = defaultProps) => (
   <div className="trail">
-    <div className="img">
-      <img src="http://58pic.ooopic.com/58pic/12/81/90/27v58PICbU9.jpg" alt="" />
-    </div>
-    <div className="clear" />
-    <div className="details">
-      <div className="title">这是一个活动大家赶紧来报名活动大家赶紧来报名</div>
-      <div className="end-date">活动时间：2017-10-02</div>
-      <div className="infos">
-        <span className="author">作者：户外爱好者</span>
-        <span className="view">1999人</span>
+    <a href={travelNote.link_url}>
+      <div className="img">
+        <img src={travelNote.image_url} alt="" />
       </div>
-    </div>
+      <div className="clear" />
+      <div className="details">
+        <div className="title">{travelNote.title}</div>
+        <div className="end-date">活动时间：{moment(travelNote.start_date, 'x').format('YYYY-MM-DD')}</div>
+        <div className="infos">
+          <span className="author">作者：{travelNote.author}</span>
+          <span className="view">{travelNote.view_count}人</span>
+        </div>
+      </div>
+    </a>
   </div>
 );
+
+Trail.defaultProps = defaultProps;
+Trail.propTypes = propTypes;
 
 export default Trail;
