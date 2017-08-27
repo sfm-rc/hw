@@ -7,6 +7,7 @@ import { InputItem, Picker, List, Button, Checkbox, ActivityIndicator, Modal, Te
 
 const AgreeItem = Checkbox.AgreeItem;
 import * as actionCreators from './action';
+import ServiceClause from './service-clause';
 
 @connect(
   state => ({
@@ -41,7 +42,8 @@ class ActivityJoin extends Component {
           extra: "",
           activity_id: this.props.match.params.activity_id
         },
-        isAgree: false
+        isAgree: false,
+        serviceModal: false,
     }
 
     componentWillMount(){
@@ -107,7 +109,11 @@ class ActivityJoin extends Component {
     onChangeExtra = (val) => {
       this.state.joinDetail.extra = val;
       const { joinDetail } = this.state;
-      this.setState({joinDetail})  
+      this.setState({joinDetail});
+    }
+
+    switchServiceModal = (is) => {
+        this.setState({serviceModal: is});
     }
 
   render() {
@@ -163,9 +169,24 @@ class ActivityJoin extends Component {
                this.setState({isAgree: e.target.checked})
               }
               }>
-            我已阅读并同意旅游局认定的<a onClick={(e) => { 
+            我已阅读并同意旅游局认定的<a onClick={(e) => {
+                this.switchServiceModal(true);
               e.preventDefault(); }}>《服务条款》</a>
             </AgreeItem>
+
+            <Modal
+                title="服务条款"
+                transparent
+                maskClosable={false}
+                style={{ width: 'inherit', height: '100%'}}
+                visible={this.state.serviceModal}
+                onClose={()=>this.switchServiceModal(false)}
+                footer={[{ text: '确定', onPress: () => { console.log('ok'); this.switchServiceModal()(false); } }]}
+            >
+                <ServiceClause />
+            </Modal>
+
+
 
             <Button style={{ margin: '40px' }} className="btn" type="primary" onClick={this.join}>报名</Button>
         </div>
