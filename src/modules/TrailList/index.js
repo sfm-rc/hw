@@ -13,6 +13,17 @@ import './index.less';
   dispatch => bindActionCreators(actionCreators, dispatch),
 )
 class TrailList extends Component {
+    constructor(props){
+        super(props);
+        const type = this.props.match.params.type;
+        if(type=='share'){
+            window.document.title = '精彩分享';
+        }
+        if(type=='month_star'){
+            window.document.title = '每月一星';
+        }
+    }
+
 
   static propTypes = {
     TravelNoteViewer: PropTypes.object,

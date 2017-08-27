@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { InputItem, Picker, List, DatePicker, Button, NavBar, Toast } from 'antd-mobile';
+import { InputItem, Picker, List, DatePicker, Button, NavBar, Toast, Modal } from 'antd-mobile';
 import moment from 'moment';
 import * as actionCreators from '../action';
 
@@ -29,11 +29,16 @@ class ProfileEditor extends Component {
     name: '',
     certification: '',
     phone: '',
-    birth: '',
+    birth: moment('1990-10-1'),
     contact: '',
     contactPhone: '',
     minDate: moment('1949-10-01 +0800', 'YYYY-MM-DD Z'),
     maxDate: moment('2017-01-01 +0800', 'YYYY-MM-DD Z'),
+  };
+
+  constructor(props) {
+    super(props);
+    window.document.title = '个人资料卡';
   }
 
   onNameChange = (name) => {
@@ -59,21 +64,24 @@ class ProfileEditor extends Component {
   onSubmit = () => {
     Toast.loading('保存中...', 1000);
     const { name, credentialValue, certification,
-      sexValue, phone, contact, contactPhone } = this.state;
+      sexValue, phone, contact, contactPhone, birth } = this.state;
     const data = {
       activity_id: this.props.match.params.activity_id,
       user_name: name,
       cer_type: credentialValue[0],
       cer_id: certification,
       sex: sexValue[0],
-      birth: '',
+      birth: birth.format('X'),
       mobile: phone,
       e_contact: contact,
       e_contact_mobile: contactPhone,
     };
     console.log(data);
-    this.props.saveProfile(data).then(() => {
+    this.props.saveProfile(data).then((rep) => {
       Toast.hide();
+      if(rep.resolved.data.code==1){
+          Toast.info('资料卡已经填写过', 4);
+      }
     });
   }
 

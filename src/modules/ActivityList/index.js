@@ -26,6 +26,11 @@ class ActivityList extends Component {
     hasMore: false,
   }
 
+  constructor(props){
+    super(props);
+    window.document.title = '活动列表';
+  }
+
   componentWillMount() {
     const pageIndex = this.state.pageIndex;
     this.props.getActivities({ admin_id: this.props.match.params.admin_id, pageIndex, limit: 10 }).then((response) => {
