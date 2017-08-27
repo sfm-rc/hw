@@ -81,7 +81,7 @@ module.exports = (env) => {
       // disableHostCheck: true,
       proxy: {
         '/hw': {
-          target: 'http://localhost:3000',
+          target: 'http://localhost:3001',
           secure: false,
           changeOrigin: true,
         },
