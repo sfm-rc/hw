@@ -29,7 +29,7 @@ class ProfileEditor extends Component {
     name: '',
     certification: '',
     phone: '',
-    birth: moment('1990-10-1'),
+    birth: moment(),
     contact: '',
     contactPhone: '',
     minDate: moment('1949-10-01 +0800', 'YYYY-MM-DD Z'),
@@ -79,8 +79,8 @@ class ProfileEditor extends Component {
     console.log(data);
     this.props.saveProfile(data).then((rep) => {
       Toast.hide();
-      if(rep.resolved.data.code==1){
-          Toast.info('资料卡已经填写过', 4);
+      if (rep.resolved.data.code === 1) {
+        Toast.info('资料卡已经填写过', 4);
       }
     });
   }
