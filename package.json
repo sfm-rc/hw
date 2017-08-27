@@ -6,7 +6,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "antd-mobile": "^1.4.1",
+    "antd-mobile": "^1.6.3",
     "axios": "^0.16.1",
     "babel-plugin-import": "^1.2.1",
     "babel-polyfill": "^6.23.0",
