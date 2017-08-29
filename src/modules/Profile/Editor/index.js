@@ -92,6 +92,10 @@ class ProfileEditor extends Component {
     return (
       <div className="hw-profile-editor">
         <NavBar iconName="left" mode="light" onLeftClick={() => { window.history.go(-1); }}>个人资料卡</NavBar>
+        <div className="hint">
+          <span className="hint-title">温馨提示：</span>
+          <div className="content">如果您已经购买专业户外保险，请跟领队确认；如果您需要俱乐部代为购买保险，请认真填写资料卡，俱乐部不会将您的资料未经您允许，透露给其他人。</div>
+        </div>
         <div className="title">被保人信息</div>
         <InputItem value={name} onChange={this.onNameChange}>姓名</InputItem>
         <Picker

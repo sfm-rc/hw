@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import './index.less';
 import { InputItem, Picker, List, Button, Checkbox, ActivityIndicator, Modal, TextareaItem } from 'antd-mobile';
+import * as actionCreators from './action';
 
 const AgreeItem = Checkbox.AgreeItem;
-import * as actionCreators from './action';
-import ServiceClause from './service-clause';
-
 @connect(
   state => ({
     ActivityJoinViewer: state.ActivityJoinViewer,
@@ -42,8 +40,7 @@ class ActivityJoin extends Component {
           extra: "",
           activity_id: this.props.match.params.activity_id
         },
-        isAgree: false,
-        serviceModal: false,
+        isAgree: false
     }
 
     componentWillMount(){
@@ -109,11 +106,7 @@ class ActivityJoin extends Component {
     onChangeExtra = (val) => {
       this.state.joinDetail.extra = val;
       const { joinDetail } = this.state;
-      this.setState({joinDetail});
-    }
-
-    switchServiceModal = (is) => {
-        this.setState({serviceModal: is});
+      this.setState({joinDetail})  
     }
 
   render() {
@@ -169,24 +162,9 @@ class ActivityJoin extends Component {
                this.setState({isAgree: e.target.checked})
               }
               }>
-            我已阅读并同意旅游局认定的<a onClick={(e) => {
-                this.switchServiceModal(true);
+              我已阅读并同意我们的<a onClick={(e) => { 
               e.preventDefault(); }}>《服务条款》</a>
             </AgreeItem>
-
-            <Modal
-                title="服务条款"
-                transparent
-                maskClosable={false}
-                style={{ width: 'inherit', height: '100%'}}
-                visible={this.state.serviceModal}
-                onClose={()=>this.switchServiceModal(false)}
-                footer={[{ text: '确定', onPress: () => { console.log('ok'); this.switchServiceModal()(false); } }]}
-            >
-                <ServiceClause />
-            </Modal>
-
-
 
             <Button style={{ margin: '40px' }} className="btn" type="primary" onClick={this.join}>报名</Button>
         </div>
