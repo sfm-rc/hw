@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import './index.less';
 import { InputItem, Picker, List, Button, Checkbox, ActivityIndicator, Modal, TextareaItem } from 'antd-mobile';
-
-const AgreeItem = Checkbox.AgreeItem;
 import * as actionCreators from './action';
 
+const AgreeItem = Checkbox.AgreeItem;
 @connect(
   state => ({
     ActivityJoinViewer: state.ActivityJoinViewer,
@@ -163,7 +162,7 @@ class ActivityJoin extends Component {
                this.setState({isAgree: e.target.checked})
               }
               }>
-            我已阅读并同意旅游局认定的<a onClick={(e) => { 
+              我已阅读并同意我们的<a onClick={(e) => { 
               e.preventDefault(); }}>《服务条款》</a>
             </AgreeItem>
 
