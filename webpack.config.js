@@ -13,7 +13,7 @@ module.exports = (env) => {
   const PATHS = {
     app: path.join(__dirname, 'src'),
     dist: path.join(__dirname, 'dist'),
-    publicPath: '/user-hw-static',
+    publicPath: '/user-hw-static/',
   };
 
   console.log('==> ecosystem: ', JSON.stringify(ecosystem, null, 2));
