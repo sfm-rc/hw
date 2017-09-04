@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import './index.less';
 
@@ -36,12 +37,17 @@ const Activity = ({ activity } = defaultProps) => {
         <div className="clear" />
         <div className="details">
           <div className="title">{activity.title}</div>
-          <div className="end-date">截止时间：{activity.end_time}</div>
+          <div className="end-date">截止时间：{moment(activity.end_time, 'X').format('YYYY-MM-DD HH:mm')}</div>
           <div className="infos">
-            <span className="price">￥{activity.price/10.0}元/人</span>
+            <span className="price">￥{activity.price / 10.0}元/人</span>
             <span className="people">{activity.cur_num}/{activity.limit_num}人</span>
           </div>
-          <div className={btnCls}>{statusMap[activity.status]}</div>
+          {
+              activity.status === 'open' ?
+                <a href={`/user-hw/activity/join/${activity.id}`} className={btnCls}>{statusMap[activity.status]}</a>
+                  :
+                <div className={btnCls}>{statusMap[activity.status]}</div>
+          }
         </div>
       </a>
     </div>
